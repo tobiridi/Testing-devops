@@ -11,6 +11,8 @@ jobs:
   building-dotnet-app:
     # sur quel runner (machine) le code va exécuter
     runs-on: ubuntu-latest
+    # défini ici pour matcher avec la configuration des secret & certifiact azure
+    environment: production
     # définition des étapes
     steps:
       - name: step 1
