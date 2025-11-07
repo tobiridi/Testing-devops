@@ -26,9 +26,9 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '8.x'
-      - name: step 5 - dotnet restore ./WebAPI_DevOps/WebAPI_DevOps.csproj
         # execute les commandes dotnet
-        run: dotnet restore
+      - name: step 5 - dotnet restore
+        run: dotnet restore ./WebAPI_DevOps
       - name: step 6 - building dotnet app
         run: dotnet build
       - name: step 7 - publish app
