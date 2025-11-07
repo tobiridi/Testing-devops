@@ -5,7 +5,7 @@ namespace WebAPI_DevOps
     {
         public static void Main(string[] args)
         {
-            //add fake comment
+            //add fake comment 2
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
