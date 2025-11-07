@@ -1,5 +1,5 @@
 on:
-  # autoriser le déclanchement manuelledu script ou quand on "push" sur main
+  # autoriser le déclanchement manuel du script ou quand on "push" sur main
   workflow_dispatch:
   # déclanche le script quand on "push" sur main
   push:
@@ -15,3 +15,6 @@ jobs:
     steps:
       - name: step 1
         run: echo hello
+      - name: step 2
+        # lister les fichiers
+        run: ls -l
