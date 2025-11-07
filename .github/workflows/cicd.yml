@@ -27,7 +27,7 @@ jobs:
         with:
           dotnet-version: '8.x'
       - name: step 4.5 - move to project dir
-        run: cd ./WebAPI_DevOps
+        run: cd WebAPI_DevOps/
         # execute les commandes dotnet
       - name: step 5 - restore app
         run: dotnet restore
