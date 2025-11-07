@@ -31,11 +31,11 @@ jobs:
         run: dotnet restore ./WebAPI_DevOps
       - name: step 6 - building dotnet app
         run: dotnet build
-      - name: step 7 - publish app
+      - name: step 7 - publish app ./WebAPI_DevOps
         # execute les commandes dotnet
-        run: dotnet publish --output ./publish
+        run: dotnet publish --output ./WebAPI_DevOps/publish
       - name: step 8 - display content publish dir
-        run: ls -l ./publish
+        run: ls -l ./WebAPI_DevOps/publish
       - name: step 9 - loguer sur azure
         uses: azure/login@v2
         with:
