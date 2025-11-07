@@ -26,18 +26,16 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '8.x'
-      - name: step 4.5 - move to project dir
-        run: cd WebAPI_DevOps/
         # execute les commandes dotnet
       - name: step 5 - restore app
-        run: dotnet restore
+        run: dotnet restore ./WebAPI_DevOps
       - name: step 6 - building app
-        run: dotnet build
+        run: dotnet build ./WebAPI_DevOps
       - name: step 7 - publish app
         # execute les commandes dotnet
-        run: dotnet publish --output ./publish
+        run: dotnet publish ./WebAPI_DevOps --output ./WebAPI_DevOps/publish
       - name: step 8 - display content publish dir
-        run: ls -l ./publish
+        run: ls -l ./WebAPI_DevOps/publish
       - name: step 9 - loguer sur azure
         uses: azure/login@v2
         with:
