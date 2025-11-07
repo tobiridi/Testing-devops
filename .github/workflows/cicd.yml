@@ -16,5 +16,8 @@ jobs:
       - name: step 1
         run: echo hello
       - name: step 2
+        # utilise un github action, qui récupère le code de la branche main pour le runner
+        uses: actions/checkout@v5
+      - name: step 3
         # lister les fichiers
         run: ls -l
