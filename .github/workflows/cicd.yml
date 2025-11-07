@@ -11,6 +11,8 @@ jobs:
   building-dotnet-app:
     # sur quel runner (machine) le code va exécuter
     runs-on: ubuntu-latest
+    # défini ici pour matcher avec la configuration des secret & certifiact azure
+    environment: production
     # définition des étapes
     steps:
       - name: step 1
@@ -26,17 +28,16 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '8.x'
-      - name: step 5 - dotnet restore
         # execute les commandes dotnet
-        run: dotnet restore
-      - name: step 6 - building dotnet app
-        # execute les commandes dotnet
-        run: dotnet build
+      - name: step 5 - restore app
+        run: dotnet restore ./WebAPI_DevOps
+      - name: step 6 - building app
+        run: dotnet build ./WebAPI_DevOps
       - name: step 7 - publish app
         # execute les commandes dotnet
-        run: dotnet publish --output ./publish
+        run: dotnet publish ./WebAPI_DevOps --output ./WebAPI_DevOps/publish
       - name: step 8 - display content publish dir
-        run: ls -l ./publish
+        run: ls -l ./WebAPI_DevOps/publish
       - name: step 9 - loguer sur azure
         uses: azure/login@v2
         with:
