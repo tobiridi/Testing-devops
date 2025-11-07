@@ -8,16 +8,32 @@ on:
 
 jobs:
   # nom du premier job
-  hello:
+  building-:
     # sur quel runner (machine) le code va exécuter
     runs-on: ubuntu-latest
     # définition des étapes
     steps:
       - name: step 1
         run: echo hello
-      - name: step 2
+      - name: step 2 (checkout du code)
         # utilise un github action, qui récupère le code de la branche main pour le runner
         uses: actions/checkout@v5
       - name: step 3
         # lister les fichiers
         run: ls -l
+      - name: step 4 - setup dotnet
+        # installer les outils nécessaire pour executer le code de notre projet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '8.x'
+      - name: step 5 - dotnet restore
+        # execute les commandes dotnet
+        run: dotnet restore
+      - name: step 6 - building dotnet app
+        # execute les commandes dotnet
+        run: dotnet build
+      - name: step 7 - publish app
+        # execute les commandes dotnet
+        run: dotnet publish --output ./publish
+      - name: step 8 - display content publish dir
+        run: ls -l ./publish
