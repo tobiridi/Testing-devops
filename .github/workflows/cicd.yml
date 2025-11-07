@@ -8,7 +8,7 @@ on:
 
 jobs:
   # nom du premier job
-  building-:
+  building-dotnet-app:
     # sur quel runner (machine) le code va exécuter
     runs-on: ubuntu-latest
     # définition des étapes
@@ -37,3 +37,10 @@ jobs:
         run: dotnet publish --output ./publish
       - name: step 8 - display content publish dir
         run: ls -l ./publish
+      - name: step 9 - loguer sur azure
+        uses: azure/login@v2
+        with:
+          # récupère les informations fournis dans les secrets du projet github
+          creds: ${{ secrets.AZURE_CONNECTION }}
+      #- name: step 10 - publier sur azure
+       # uses: 
